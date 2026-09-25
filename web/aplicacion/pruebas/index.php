@@ -10,8 +10,6 @@ cuerpo(); //llamo a la vista
 finCuerpo();
 // **********************************************************
 
-
-
 //vista
 function cabecera() {}
 //vista
@@ -19,8 +17,9 @@ function cuerpo()
 {
 ?>
     <br><br>
-    Hola, estás en Index.php
+    Elemento de pruebas
     <br><br>
-    <a href="basicas.php">Funcionamiento basico</a>
+    <a href="basicas.php">Funcionamiento básico</a>
+
 <?php
 }

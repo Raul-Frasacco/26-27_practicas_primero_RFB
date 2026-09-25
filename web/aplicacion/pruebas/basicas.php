@@ -5,13 +5,10 @@ include_once(dirname(__FILE__) . "/../../cabecera.php");
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("Pruebas basicas");
+inicioCuerpo("pruebas basicas");
 cuerpo(); //llamo a la vista
 finCuerpo();
 // **********************************************************
-
-
-
 
 //vista
 function cabecera() {}
@@ -20,9 +17,9 @@ function cuerpo()
 {
 ?>
     <br><br>esto es html
-   <?php
-        echo "gshgfgksj";
-   ?>
-
+    <?php 
+        echo "klñfffdj";
+    ?>
+  
 <?php
 }
