@@ -2,10 +2,10 @@
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
 //dibuja la plantilla de la vista
-inicioCabecera("APLICACION PRIMER TRIMESTRE");
+inicioCabecera("RELACION 1");
 cabecera();
 finCabecera();
-inicioCuerpo("2DAW APLICACION");
+inicioCuerpo("RELACION1");
 cuerpo(); //llamo a la vista
 finCuerpo();
 // **********************************************************
