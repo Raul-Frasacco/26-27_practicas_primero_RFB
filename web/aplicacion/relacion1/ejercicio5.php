@@ -16,10 +16,6 @@ function cabecera() {}
 function cuerpo()
 {
 ?>
-    <br><br>
-    Elemento de pruebas
-    <br><br>
-    <a href="basicas.php">Funcionamiento básico</a><br>
-    <a href="pasopar.php">Comunicacion controlador-vista</a>
+    
 <?php
 }
