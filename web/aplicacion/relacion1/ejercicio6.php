@@ -1,7 +1,6 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
-
 $barraUbi = [
     [
         "TEXTO"=>"Inicio",
@@ -37,11 +36,12 @@ function cuerpo($vector)
     
 <?php
 
- print_r($vector);
+print_r($vector);
     echo "<br>";
 
     reset($vector);
 
+    echo "<br>Con bucle for<br>";
     for (;key($vector) != NULL; next($vector)) {
         echo "Posición: " . key($vector) . " -> " . current($vector)."<br>";
     }
@@ -53,6 +53,8 @@ function cuerpo($vector)
         echo "Posición: " . key($vector) . " -> " . current($vector)."<br>";
         next($vector);
     }
+
+    echo "<br>Con bucle do while<br>";
     
     reset($vector);
     do {
@@ -60,6 +62,8 @@ function cuerpo($vector)
         next($vector);
     } while (key($vector) != NULL);
 
+
+    echo "<br>Usando array_keys y array_values<br>";
     
     $claves=array_keys($vector);
     $valores=array_values($vector);

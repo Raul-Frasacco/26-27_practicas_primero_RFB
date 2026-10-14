@@ -1,7 +1,6 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
-
 $barraUbi = [
     [
         "TEXTO"=>"Inicio",
@@ -17,18 +16,19 @@ $barraUbi = [
     ]
 ];
 
-$vector = array();
-$vector[1]= "esto es una cadena";
-$vector["posi1"] = 25.67;
-$vector[]= false;
-$vector["ultima"]= array(2,5,96);
-$vector[56] = 23;
+$vector=array();
+    $vector[1]="esto es una cadena";
+    $vector["posi1"]=25.67;
+    $vector[]=false;
+    $vector["ultima"]=array(2,5,96);
+    $vector[56]=23;
+
 
 //dibuja la plantilla de la vista
 inicioCabecera("RELACION 1");
 cabecera();
 finCabecera();
-inicioCuerpo("RELACION1",$barraUbi );
+inicioCuerpo("RELACION1", $barraUbi);
 cuerpo($vector); //llamo a la vista
 finCuerpo();
 // **********************************************************
@@ -42,28 +42,37 @@ function cuerpo($vector)
     
 <?php
 
-foreach($vector as $i => $valor){
-    echo "<h3>Posicion " . $i . " contenido " . gettype($valor). "</h3><br>";
-    switch (gettype($valor)){
-        case ("array"):
-            echo "Mostrando valores del array: ";
-            foreach($valor as $j => $val)
-                echo $val . "  ";  
-            echo "<br>";
-            break;
-        
-        case ("integer"):
-            echo "Entero con valor " . $valor . ", en binario " . decbin($valor);
+    foreach ($vector as $key => $valor) {
+        echo "Posición " .  $key . " contenido (tipo): " . gettype($valor);
 
-        case ("double"):
-            echo $valor . " que al cuadrado es " . sqrt($valor);
-
-        case ("string"): 
-            echo $valor;
-
-        case ("boolean"):
-            echo $valor;
-
-         }
+        switch (gettype($valor)) {
+            case "array": {
+                    echo "<br>Contenido del array: ";
+        foreach ($valor as $val) {
+            echo $val . ", ";
+        }
+    echo "<br>";
+                    echo "<br>";
+                };
+                break;
+            case "integer": {
+                    echo "<br>Entero bonito valor " . $valor . " en binario " . decbin($valor) . "<br><br>";
+                };
+                break;
+            case "double": {
+                    echo "<br>Real " . $valor . " que al cuadrado es " . pow($valor, 2) . "<br><br>";
+                };
+                break;
+            case "string": {
+                    echo "<br>-" . $valor . "-<br><br>";
+                };
+                break;
+            case "boolean": {
+                    echo "<br>" . ($valor ? "true" : "false") . " su opuesto -> " . (!$valor ? "true" : "false") . "<br><br>";
+                };
+                break;
+        }
     }
+
+
 }
