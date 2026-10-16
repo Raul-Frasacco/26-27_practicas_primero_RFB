@@ -16,24 +16,33 @@ $barraUbi = [
     ]
 ];
 
+$v1 = 17.5;
+$v2 = 379987.24;
+
+$datos = [0 => $v1, 1 => $v2];
+
 //dibuja la plantilla de la vista
 inicioCabecera("RELACION 2");
 cabecera();
 finCabecera();
 inicioCuerpo("RELACION2", $barraUbi);
-cuerpo(); //llamo a la vista
+cuerpo($datos); //llamo a la vista
 finCuerpo();
 // **********************************************************
 
 //vista
 function cabecera() {}
 //vista
-function cuerpo()
+function cuerpo($datos)
 {
 ?>
     
 
     
 <?php
+
+    echo '-'.str_pad(number_format($datos[0], 1, ","), 15, 0, STR_PAD_LEFT).'-';
+    echo "<br/>";
+    echo number_format($datos[1], 2, ",", ".");
 
 }

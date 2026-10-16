@@ -26,7 +26,7 @@ function inicioCabecera($titulo)
         <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
         Remove this if you use the .htaccess -->
             <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1">
-
+        
         <title><?php echo $titulo ?></title>
         <meta name="description" content="">
         <meta name="author" content="Administrador">
@@ -55,9 +55,9 @@ function inicioCuerpo($cabecera, array $barraUbi = [])
 ?>
     <body>
         <div id="documento">
-        
             <header>
                 <h1 id="titulo"><?php echo $cabecera;?></h1>
+                <!-- <img src="../../imagenes/zonaG.jpg" alt="" id="logoZona"> -->
             </header>
             
             <div id="barraLogin">
