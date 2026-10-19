@@ -16,22 +16,59 @@ $barraUbi = [
     ]
 ];
 
+$texto = <<<HTML
+<h1>H1 Ejercicio 5</h1>
+<p>Ayer me comi 165 manzanas</p>
+<div>ejemplo@mail.com o raul@estudiante.es</div>
+HTML;
+
+$patronEtiquetas = "/<[>]+>/";
+$patronNumeros   = "/\b\d+\b/";
+$patronEmail     = "/[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}/";
+
+preg_match_all($patronEtiquetas, $texto, $etiquetas, PREG_OFFSET_CAPTURE);
+preg_match_all($patronNumeros, $texto, $numeros, PREG_OFFSET_CAPTURE);
+preg_match_all($patronEmail, $texto, $emails, PREG_OFFSET_CAPTURE);
+
+
 //dibuja la plantilla de la vista
 inicioCabecera("RELACION 2");
 cabecera();
 finCabecera();
 inicioCuerpo("RELACION2", $barraUbi);
-cuerpo(); //llamo a la vista
+cuerpo($texto, $etiquetas, $numeros, $emails); //llamo a la vista
 finCuerpo();
 // **********************************************************
 
 //vista
 function cabecera() {}
 //vista
-function cuerpo()
+function cuerpo($texto, $etiquetas, $numeros, $emails)
 {
 ?>
-    
+      <h2>Texto original:</h2>
+    <pre><?= htmlspecialchars($texto) ?></pre>
+
+    <h2>Etiquetas encontradas:</h2>
+    <ul>
+        <?php foreach ($etiquetas[0] as $et): ?>
+            <li>Posición <?= $et[1] ?>: <?= htmlspecialchars($et[0]) ?></li>
+        <?php endforeach; ?>
+    </ul>
+
+    <h2>Números encontrados:</h2>
+    <ul>
+        <?php foreach ($numeros[0] as $num): ?>
+            <li>Posición <?= $num[1] ?>: <?= $num[0] ?></li>
+        <?php endforeach; ?>
+    </ul>
+
+    <h2>Emails encontrados:</h2>
+    <ul>
+        <?php foreach ($emails[0] as $em): ?>
+            <li>Posición <?= $em[1] ?>: <?= $em[0] ?></li>
+        <?php endforeach; ?>
+    </ul>
 
     
 <?php

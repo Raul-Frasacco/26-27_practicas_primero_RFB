@@ -55,9 +55,12 @@ function inicioCuerpo($cabecera, array $barraUbi = [])
 ?>
     <body>
         <div id="documento">
-            <header>
-                <h1 id="titulo"><?php echo $cabecera;?></h1>
-                <!-- <img src="../../imagenes/zonaG.jpg" alt="" id="logoZona"> -->
+            <header id="cabecera">
+                <a href="../../index.php">
+                <img src="../../imagenes/zonaG.jpg" alt="" id="logoZona">
+            </a>
+                <h1 id="titulo"><?php echo " " . $cabecera;?></h1>
+            
             </header>
             
             <div id="barraLogin">
@@ -67,6 +70,9 @@ function inicioCuerpo($cabecera, array $barraUbi = [])
                 <ul>
                     <li><a href="/index.php">Inicio</a></li>
                     <li><a href="/aplicacion/pruebas/index.php">Ejemplos Basicos</a></li>
+                    <li><a href="/aplicacion/relacion1/index.php">Relacion 1</a></li>
+                    <li><a href="/aplicacion/relacion2/index.php">Relacion 2</a></li>
+                    <li><a href="/aplicacion/relacion3/index.php">Relacion 3</a></li>
                     
                  </ul> 
                 
