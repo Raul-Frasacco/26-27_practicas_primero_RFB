@@ -86,7 +86,13 @@ function cuerpo($vector, $numero)
     echo devuelve(num1: $valor4, num3: 5) . "<br>";
     echo $valor4 . "<br>";
 
-    
+?>
+
+  <h3>Ejercicio5 </h3>
+  
+<?php
+
+   echo hacerOperacion("restar",3,1);
 
 }
 

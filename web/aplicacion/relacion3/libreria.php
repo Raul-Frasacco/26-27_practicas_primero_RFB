@@ -123,14 +123,54 @@ function devuelve(int &$num1, int $num2 = 10, int $num3 = 10){
 
 }
 
+/**
+ *  Se tienen las funciones suma, resta y multiplicacion que reciben cada una dos parámetros 
+ * numéricos (entero) y que devuelven el resultado de la operación que indica su nombre sobre los 
+ * parámetros. 
+ * Tenemos la Función hacerOperacion que recibe tres parámetros. El primero es una cadena 
+ * que puede ser suma, resta o multiplicacion. Los otros dos son los operandos. Esta función se 
+ * encargará de devolver el resultado de ejecutar la “cadena” con los operandos usando una variable
+ * función para llamar a la operación. Hay que comprobar indicando una operación correcta (devuelve 
+ * false si la operación no es válida). 
+ *
+ * @param string $cad
+ * @param integer $oper1
+ * @param integer $oper2
+ */
 function hacerOperacion(string $cad, int $oper1, int $oper2){
-    switch (strtolower($cad)){
-        case "suma":
+    $operacion = strtolower($cad);
+
+    if ($operacion !== "sumar" && $operacion !== "restar" && $operacion !== "multiplicar"){
+        return false;
     }
+
+    return ($operacion($oper1, $oper2));
 
 }
 
-function sumar(){
+function sumar(int $num1, int $num2){
+        return ($num1 + $num2);
+}
 
+function restar(int $num1, int $num2){
+        return ($num1 - $num2);
+}
+
+function multiplicar(int $num1, int $num2){
+        return ($num1 * $num2);
+}
+
+/**
+ *  Crear la función llamadaAFuncion que recibe tres operandos (entero, entero y callable) y que 
+ * devuelve un entero que es el resultado de llamar al parámetro callback con los otros parámetros. 
+ * Llamar a la función llamadaAFuncion 3 veces pasando como parámetro de callback funciones de 
+ * flecha distintas que tu definas
+ *
+ * @param integer $ent1
+ * @param integer $ent2
+ * @param callable $callback
+ */
+function llamadaAFuncion(int $ent1, int $ent2, callable $callback){
+    return $callback($ent1, $ent2);
 }
 
