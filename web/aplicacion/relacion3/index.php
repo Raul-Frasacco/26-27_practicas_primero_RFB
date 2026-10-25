@@ -94,5 +94,37 @@ function cuerpo($vector, $numero)
 
    echo hacerOperacion("restar",3,1);
 
+
+  ?>
+
+  <h3>Ejercicio6 </h3>
+  
+<?php
+
+    echo llamadaAFuncion(1,2,fn($a,$b)=>$a+$b) . "<br>" . PHP_EOL;
+    echo llamadaAFuncion(1,2,fn($a,$b)=>$a-$b) . "<br>" . PHP_EOL;
+    echo llamadaAFuncion(1,2,fn($a,$b)=>$a*$b) . "<br>" . PHP_EOL;
+
+
+?>
+
+  <h3>Ejercicio7 </h3>
+  
+<?php
+
+$vector = array("uno", "grande", "caminos", "a");
+
+  foreach ($vector as $elem) {
+                echo $elem . " ";
+        }
+
+        echo "<br>" . PHP_EOL;
+
+        ordenar($vector);
+
+        foreach ($vector as $elem) {
+                echo $elem . " ";
+        }
+
 }
 

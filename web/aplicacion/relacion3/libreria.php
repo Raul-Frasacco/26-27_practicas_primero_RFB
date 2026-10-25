@@ -174,3 +174,12 @@ function llamadaAFuncion(int $ent1, int $ent2, callable $callback){
     return $callback($ent1, $ent2);
 }
 
+function ordenar(array &$miArray): array {
+    
+    usort($miArray, function ($param1, $param2): int {
+        return mb_strlen($param2) <=> mb_strlen($param1);
+    });
+
+    return $miArray;
+}
+
