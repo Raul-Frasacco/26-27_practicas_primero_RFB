@@ -5,7 +5,6 @@ class InstrumentoViento extends InstrumentoBase{
     protected string $material = "madera";
 
 
-    #[Override]
     public function __construct(string $material = "madera", int $ed = 15)
     {
         $des = "instrumento de viento";

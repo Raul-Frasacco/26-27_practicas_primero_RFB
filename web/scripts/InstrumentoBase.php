@@ -46,7 +46,7 @@ abstract class InstrumentoBase{
     public function __toString()
     {
         return "instrumento con descripcion " . $this->getDescripcion() . ", instancia <br>"
-        . $this->getOrden() . " de un total de " . $this->getCont() . ". Tiene " . $this->getEdad() . " años. La clase es " . get_class();
+        . $this->getOrden() . " de un total de " . $this->getCont() . ". Tiene " . $this->getEdad() . " años. La clase es " . get_class($this);
     }
 
     // Evita que intenten escribir en propiedades no declaradas
