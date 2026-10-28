@@ -13,7 +13,7 @@ class InstrumentoViento extends InstrumentoBase{
     }
 
     public function sonido(): string{
-        return "Soplando estoy soplando vengo";
+        return "Soplando voy soplando vengo";
     }
 
     final public function afinar(): string{
@@ -22,7 +22,6 @@ class InstrumentoViento extends InstrumentoBase{
         . "3. Disfrutar ";    
     }
 
-    #[Override]
     public function __toString()
     {
         return parent::__toString() . " <br>Instrumento de material " . $this->material;

@@ -4,7 +4,7 @@ abstract class InstrumentoBase{
     protected string $descripcion;
     protected int $edad = 10;
     protected static int $contElem = 0;
-    private int $ordenCreacion;
+    protected int $ordenCreacion;
 
     public function __construct(string $des, int $ed = 10)
     {
@@ -57,16 +57,6 @@ abstract class InstrumentoBase{
     // Evita que intenten leer propiedades no declaradas
     public function __get(string $name): mixed {
         throw new ErrorException("No se permite la sobrecarga dinámica. La propiedad '\$$name' no existe o es privada.");
-    }
-
-    // Evita el uso de isset() en propiedades no declaradas
-    public function __isset(string $name): bool {
-        return false;
-    }
-
-    // Evita el uso de unset() en propiedades no declaradas
-    public function __unset(string $name): void {
-        throw new ErrorException("No se permite la sobrecarga dinámica. No puedes eliminar propiedades.");
     }
 
 }

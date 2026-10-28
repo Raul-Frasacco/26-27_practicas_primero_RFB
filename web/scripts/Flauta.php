@@ -6,4 +6,21 @@ final class Flauta extends InstrumentoViento{
     {
         parent::__construct($material, $ed);
     }
+
+    public static function CrearDesdeArray(array $asociativo): self{
+        $material = $asociativo["material"] ?? "madera";
+
+        $edad = $asociativo["edad"] ?? 15;
+
+        $flautaNueva = new Flauta($material, $edad);
+        return $flautaNueva;
+    }
+
+    public function __clone()
+    {
+        $this->edad = 0;
+        self::$contElem++;
+        $this->ordenCreacion = self::$contElem;        
+    }
+
 }
