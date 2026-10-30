@@ -3,7 +3,8 @@ include_once(dirname(__FILE__) . "/../../cabecera.php");
 include_once(__DIR__ . "/../../scripts/InstrumentoBase.php");
 include_once(__DIR__ . "/../../scripts/InstrumentoViento.php");
 include_once(__DIR__ . "/../../scripts/Flauta.php");
-
+include_once(__DIR__ . "/../../scripts/EstadoCivil.php");
+include_once(__DIR__ . "/../../scripts/Persona.php");
 //controlador
 $barraUbi = [
     [
@@ -19,19 +20,20 @@ $barraUbi = [
     $pruebaViento = new InstrumentoViento("piedra", 20);
     $pruebaViento2 = new InstrumentoViento("cobre", 200);
     $pruebaFlauta = Flauta::CrearDesdeArray(["material" => "plata"]);
+    $pruebaPersona = Persona::registrarPersona("Raul", "05/11/2004", "calle callejuela", "antequera", EstadoCivil::soltero);
 //dibuja la plantilla de la vista
 inicioCabecera("RELACION 4");
 cabecera();
 finCabecera();
 inicioCuerpo("RELACION4", $barraUbi);
-cuerpo($pruebaViento, $pruebaViento2,$pruebaFlauta); //llamo a la vista
+cuerpo($pruebaViento, $pruebaViento2,$pruebaFlauta, $pruebaPersona); //llamo a la vista
 finCuerpo();
 // **********************************************************
 
 //vista
 function cabecera() {}
 //vista
-function cuerpo($pruebaViento, $pruebaViento2, $pruebaFlauta)
+function cuerpo($pruebaViento, $pruebaViento2, $pruebaFlauta, $pruebaPersona)
 {
 ?>
 
@@ -63,4 +65,31 @@ function cuerpo($pruebaViento, $pruebaViento2, $pruebaFlauta)
     echo "<h4>---------------------</h4>";
     echo $clonFlauta->__toString();
 
+?>
+
+ <h3>Prueba clase Persona</h3>
+
+<?php
+    echo "<h4>----------Prueba Asignada-----------</h4><br>";
+    echo $pruebaPersona->__toString() . "<br>";
+    echo "<h4>----------Prueba Aleatoria-----------</h4><br>";
+    // Voy a explicar esta parte explicando lo que he pensado
+    $arrayAl = []; //Primero creo un array vacio
+    /*
+    Con un for Usando la funcion casos saco todos y me guardo
+    en el array vacio unicamente el valor
+    */
+    foreach(EstadoCivil::casos() as $des => $valor)
+        $arrayAl[] = $valor;
+    
+    //Genero un numero aleatorio que va desde cero hasta
+    //el tamaño del array -1
+    $numAl = rand(0, (count($arrayAl)-1));
+
+    //Me guardo el valor correspondiente
+    $valFinal = $arrayAl[$numAl];
+
+   // Uso el set junto al tryfrom para cambiar el estado
+    $pruebaPersona->setEstado(EstadoCivil::tryFrom($valFinal));
+    echo $pruebaPersona->__toString() . "<br>";
 }
