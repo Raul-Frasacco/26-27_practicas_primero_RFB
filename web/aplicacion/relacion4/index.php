@@ -5,6 +5,8 @@ include_once(__DIR__ . "/../../scripts/InstrumentoViento.php");
 include_once(__DIR__ . "/../../scripts/Flauta.php");
 include_once(__DIR__ . "/../../scripts/EstadoCivil.php");
 include_once(__DIR__ . "/../../scripts/Persona.php");
+include_once(__DIR__ . "/../../scripts/SerieFibonacci.php");
+include_once(__DIR__ . "/../../scripts/ClaseMisPropiedades.php");
 //controlador
 $barraUbi = [
     [
@@ -21,19 +23,24 @@ $barraUbi = [
     $pruebaViento2 = new InstrumentoViento("cobre", 200);
     $pruebaFlauta = Flauta::CrearDesdeArray(["material" => "plata"]);
     $pruebaPersona = Persona::registrarPersona("Raul", "05/11/2004", "calle callejuela", "antequera", EstadoCivil::soltero);
+    $Objeto = new ClaseMisPropiedades();
+
+    $Objeto->propPublica = "publica";
+    $Objeto->propiedad1 = 25;
+    $Objeto->propiedad2 = "cadena de texto";
 //dibuja la plantilla de la vista
 inicioCabecera("RELACION 4");
 cabecera();
 finCabecera();
 inicioCuerpo("RELACION4", $barraUbi);
-cuerpo($pruebaViento, $pruebaViento2,$pruebaFlauta, $pruebaPersona); //llamo a la vista
+cuerpo($pruebaViento, $pruebaViento2,$pruebaFlauta, $pruebaPersona, $Objeto); //llamo a la vista
 finCuerpo();
 // **********************************************************
 
 //vista
 function cabecera() {}
 //vista
-function cuerpo($pruebaViento, $pruebaViento2, $pruebaFlauta, $pruebaPersona)
+function cuerpo($pruebaViento, $pruebaViento2, $pruebaFlauta, $pruebaPersona, $Objeto)
 {
 ?>
 
@@ -92,4 +99,26 @@ function cuerpo($pruebaViento, $pruebaViento2, $pruebaFlauta, $pruebaPersona)
    // Uso el set junto al tryfrom para cambiar el estado
     $pruebaPersona->setEstado(EstadoCivil::tryFrom($valFinal));
     echo $pruebaPersona->__toString() . "<br>";
+
+?>
+
+ <h3>Prueba clase Fibonacci</h3>
+
+<?php
+    foreach (new SerieFibonacci(10) as $valor) {
+        echo "$valor&nbsp;";
+    }
+
+?>
+    <h3>Prueba clase MisPropiedades</h3>
+   
+<?php
+    echo "La propiedad 1 vale " . $Objeto->propiedad1 . "<br>";
+
+
+
+    echo "<h3>Iterando propiedades:</h3>";
+    foreach ($Objeto as $clave => $valor) {
+        echo "$clave => $valor<br>";
+    }
 }
