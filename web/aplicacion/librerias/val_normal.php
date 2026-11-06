@@ -54,4 +54,68 @@ function validaFecha(string &$var, string $defecto):bool {
     $var = "$dia/$mes/$año";
     return true;
 }
+/*
+function validaHora(string &$var, string $defecto):bool Esta función comprueba que $var 
+contiene una hora correcta en el formato hh:mm:ss . En $var se devuelve la hora saneada (2 
+cifras para hora, min, segundos - Ej 0:5:1, hora valida aunque se sanea y se convierte a 
+00:05:01). En caso de no cumplir las condiciones devuelve $defecto en $var. La función 
+devuelve true si es correcta y false en caso contrario 
+*/
+
+function validaHora(string &$var, string $defecto):bool {
+    $arrayHora = explode(":" , $var);
+
+    if (count($arrayHora) !== 3) {
+        $var = $defecto;
+        return false;
+    }
+
+    $hora = sprintf("%02d" , (int)$arrayHora[0]);
+    $min = sprintf("%02d" , (int)$arrayHora[1]);
+    $seg = sprintf("%02d", (int)$arrayHora[2]);
+
+    if ($hora > 23 || $hora < 0 || $min > 59 || $min < 0 ||$seg > 59 || $seg < 0){
+        $var = $defecto;
+        return false;
+    }
+
+    $var = "$hora:$min:$seg";
+    return true;
+}
+
+/*
+function validaEmail(string &$var, string $defecto):bool Esta función comprueba que $var 
+contiene un email correcto en el formato aaaaa@bbbb.ccc. En $var se devuelve el email 
+saneado (en caso de no cumplir las condiciones devuelve $defecto). La función devuelve 
+true si es correcto y false en caso contrario. 
+*/
+
+function validaEmail(string &$var, string $defecto):bool{
+    $correoSaneado = trim(mb_strtolower($var));
+    $rex = "/^[a-z0-9]{5}[@][a-z0-9]{4}\.[a-z0-9]{3}$/";
+
+    if(preg_match($rex, $correoSaneado) !== 1){
+        $var = $defecto;
+        return false;
+    }
+
+    $var = $correoSaneado;
+    return true;
+}
+
+/*
+function validaCadena(string &$var, int $longitud, string $defecto):bool Esta función 
+comprueba que $var contiene una cadena de longitud máxima $longitud. En caso de no 
+cumplir las condiciones se asigna a $var el valor $defecto. La función devuelve true si es 
+correcto y false en caso contrario. 
+*/
+
+function validaCadena(string &$var, int $longitud, string $defecto):bool{
+    if (mb_strlen($var) > $longitud){
+        $var = $defecto;
+        return false;
+    }
+
+    return true;
+}
 ?>

@@ -40,4 +40,33 @@ function cuerpo()
 
  echo $fecha;
 
+?>
+<h4>Validar hora</h4>
+<?php
+ $hora = "05:59:7";
+
+ validaHora($hora, "01/01/2000");
+
+ echo $hora;
+
+?>
+<h4>Validar correo</h4>
+<?php
+ $correoVal = "aaaa@bbbb.ccc";
+
+ validaEmail($correoVal, "aeiou@aeio.aei");
+
+ echo $correoVal;
+
+?>
+<h4>Validar cadena</h4>
+<?php
+ $cadenaVal = "cajas";
+
+ validaCadena($cadenaVal, 5 , "SIsi");
+
+ echo $cadenaVal;
+
+ 
+
 }
