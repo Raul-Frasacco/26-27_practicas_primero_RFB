@@ -1,6 +1,7 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 include_once(dirname(__FILE__) . "/../../aplicacion/librerias/val_normal.php");
+include_once(dirname(__FILE__) . "/../../aplicacion/libreria/val_filter.php");
 //controlador
 $barraUbi = [
     [

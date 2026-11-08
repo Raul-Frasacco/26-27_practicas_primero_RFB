@@ -1,4 +1,5 @@
 <?php
+
 /*
 function validaEntero(int &$var, int $min, int $max, int $defecto):bool Esta función
 comprueba que $var contiene un entero cuyo valor está entre $min y $max. En $var se
@@ -117,5 +118,33 @@ function validaCadena(string &$var, int $longitud, string $defecto):bool{
     }
 
     return true;
+}
+
+/*function validaExpresion(string &$var, string $expresion, string $defecto):bool Esta función
+comprueba que $var cumple con la expresión regular $expresion. En caso de no cumplir las
+condiciones se asigna a $var el valor por $defecto. La función devuelve true si es correcto y
+false en caso contrario.*/
+
+function validaExpresion(string &$var, string $expresion, string $defecto): bool {
+    if (preg_match($expresion, $var)) {
+        return true;
+    }
+
+    $var = $defecto;
+    return false;
+}
+
+/*function validaRango(mixed $var, array $posibles, int $tipo=1):bool Esta función comprueba
+que $var sea igual a uno de los elementos del array $posibles ($tipo=1) o a una de las claves
+del array $posibles ($tipo=2). La función devuelve true si es correcta y false en caso contrario.*/
+
+function validaRango(mixed $var, array $posibles, int $tipo = 1): bool {
+    if ($tipo === 1) {
+        return in_array($var, $posibles, true); 
+    } elseif ($tipo === 2) {
+        return array_key_exists($var, $posibles); 
+    }
+
+    return false; 
 }
 ?>
